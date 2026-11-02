@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>畅羽 · 羽毛球运动记录 for vivo WATCH</title>
+<style>
+  :root{--bg:#0B0E14;--card:#161B26;--surface:#262C3A;--lime:#A3E635;--white:#F5F7FA;--text:#C9D0DE;--dim:#8A93A6;--blue:#85B7EB;--red:#E25553}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","Segoe UI",system-ui,sans-serif;line-height:1.7}
+  a{color:var(--lime);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  header{position:sticky;top:0;z-index:20;background:rgba(11,14,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--white);font-weight:700;letter-spacing:2px}
+  .brand .mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#1B2432,#0D121A);border:1px solid rgba(163,230,53,.45);display:flex;align-items:center;justify-content:center;color:var(--lime);font-size:21px}
+  .nav-links{display:flex;gap:24px;font-size:14px;color:var(--dim)}
+  .nav-links a{color:var(--dim)}.nav-links a:hover{color:var(--lime)}
+  .hero{padding:86px 0 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:10px;color:var(--lime);font-size:14px;letter-spacing:3px;font-weight:700}
+  .kicker:before{content:"";width:24px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+  h1{font-size:72px;line-height:1.12;letter-spacing:2px;color:var(--white);margin:20px 0 18px;font-weight:800}
+  h1 em{font-style:normal;color:var(--lime)}
+  .lead{font-size:20px;color:var(--text);max-width:520px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .pill{padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid rgba(255,255,255,.07);font-size:13px;color:var(--dim)}
+  .hero-art{position:relative}
+  .hero-art img{width:100%;display:block;border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  section{padding:56px 0;border-top:1px solid rgba(255,255,255,.05)}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+  h2{font-size:34px;line-height:1.25;color:var(--white);letter-spacing:1px}
+  .section-head p{color:var(--dim);font-size:15px;max-width:520px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .shot{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+  .shot img{width:100%;display:block}
+  .shot .cap{padding:14px 16px;font-size:14px;color:var(--dim);display:flex;justify-content:space-between;align-items:center}
+  .shot .cap b{color:var(--white);font-weight:600}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .feature{background:linear-gradient(180deg,rgba(22,27,38,.95),rgba(16,20,29,.95));border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:24px}
+  .feature .ico{width:40px;height:40px;border-radius:13px;background:rgba(163,230,53,.10);border:1px solid rgba(163,230,53,.28);display:flex;align-items:center;justify-content:center;color:var(--lime);font-size:19px;font-weight:700;margin-bottom:16px}
+  .feature h3{font-size:18px;color:var(--white);margin-bottom:8px}
+  .feature p{font-size:14px;color:var(--dim)}
+  .tech{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+  .panel{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:28px}
+  .panel h3{color:var(--white);font-size:20px;margin-bottom:16px}
+  .panel ul{list-style:none;display:grid;gap:12px}
+  .panel li{display:flex;gap:10px;font-size:14px;color:var(--dim)}
+  .panel li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);margin-top:9px;flex:none;box-shadow:0 0 10px rgba(163,230,53,.7)}
+  .disclaimer{background:rgba(226,85,83,.07);border:1px solid rgba(226,85,83,.22);border-radius:20px;padding:22px 24px;color:#E7B4B1;font-size:14px}
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:36px 0 48px;color:#5F6878;font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:32px;padding-top:52px}
+    h1{font-size:54px}
+    .grid-4{grid-template-columns:repeat(2,1fr)}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .tech{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    h1{font-size:42px}
+    .grid-4,.features{grid-template-columns:1fr}
+    .section-head{flex-direction:column;align-items:flex-start}
+    section{padding:40px 0}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><div class="mark">羽</div><span>畅羽 · CHANGYU</span></div>
+    <nav class="nav-links">
+      <a href="#screens">界面</a><a href="#features">功能</a><a href="#tech">实现</a><a href="#privacy">隐私</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" style="border-top:none">
+    <div>
+      <div class="kicker">BADMINTON TRACKER · BLUEOS</div>
+      <h1>每一次挥拍，<br>都有<em>数据回响</em></h1>
+      <p class="lead">面向 vivo WATCH 的羽毛球运动记录应用。自动识别挥拍，实时记录心率与拍速，赛后复盘正反手、上下手与最长连拍。</p>
+      <div class="meta">
+        <span class="pill">vivo WATCH GT · 390×450</span>
+        <span class="pill">BlueOS 3.0+</span>
+        <span class="pill">本地存储 · 无需联网</span>
+        <span class="pill">v0.1.4 / code 5</span>
+      </div>
+    </div>
+    <div class="hero-art"><img src="assets/cover-1024.png" alt="畅羽封面"></div>
+  </section>
+
+  <section id="screens">
+    <div class="section-head">
+      <h2>一块表，完成记录与复盘</h2>
+      <p>从开始运动到赛后技术统计，全流程在手表本地完成。</p>
+    </div>
+    <div class="grid-4">
+      <div class="shot"><img src="assets/showcase-01-home.png" alt="首页"><div class="cap"><b>首页</b><span>开始运动</span></div></div>
+      <div class="shot"><img src="assets/showcase-02-recording.png" alt="录制页"><div class="cap"><b>实时记录</b><span>挥拍 · 心率 · 拍速</span></div></div>
+      <div class="shot"><img src="assets/showcase-03-stats.png" alt="技术统计"><div class="cap"><b>技术统计</b><span>正反手 · 上下手</span></div></div>
+      <div class="shot"><img src="assets/showcase-04-history.png" alt="历史记录"><div class="cap"><b>历史记录</b><span>滑动回看</span></div></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-head">
+      <h2>为羽毛球场景设计</h2>
+      <p>不是通用运动计步，而是围绕挥拍与回合的技术记录。</p>
+    </div>
+    <div class="features">
+      <div class="feature"><div class="ico">01</div><h3>挥拍识别</h3><p>IMU 峰值 + FWHM 双判据，过滤走路、捡球、擦汗等宽波形。</p></div>
+      <div class="feature"><div class="ico">02</div><h3>实时数据</h3><p>挥拍数、心率、本拍 / 最高 / 平均拍速，暂停与结束二次确认。</p></div>
+      <div class="feature"><div class="ico">03</div><h3>赛后总结</h3><p>时长、三档强度、杀球 / 高远 / 吊球占比、心率与估算消耗。</p></div>
+      <div class="feature"><div class="ico">04</div><h3>技术统计</h3><p>正反手、上下手分布，最长连拍与回合跨度，看见自己的打法。</p></div>
+      <div class="feature"><div class="ico">05</div><h3>历史记录</h3><p>原生列表上下滑动，点行查看对应场次总结，最多保留 60 场。</p></div>
+      <div class="feature"><div class="ico">06</div><h3>本地优先</h3><p>不联网、无账号、无广告；心率与运动数据只留在手表本地。</p></div>
+    </div>
+  </section>
+
+  <section id="tech">
+    <div class="section-head">
+      <h2>技术实现</h2>
+      <p>BlueOS .ux + JavaScript，全部运行在手表端。</p>
+    </div>
+    <div class="tech">
+      <div class="panel">
+        <h3>检测与估算</h3>
+        <ul>
+          <li>50Hz IMU 采样，直接取峰值；抛物线重建与平滑被验证为负优化</li>
+          <li>FWHM ≤100ms 过滤日常动作，降低误检</li>
+          <li>重力 EMA + 腕部轴向特征估算正反手 / 上下手</li>
+          <li>相邻挥拍间隔 ≤4s 计为同一回合，输出最长连拍</li>
+          <li>MET / 心率粗估热量，仅用于纵向比较</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>工程与数据</h3>
+        <ul>
+          <li>页面：Home / 校准 / Recording / Summary / SummaryDetail / History</li>
+          <li>本地 K-V 存储场次与历史，最多 60 场</li>
+          <li>运动期间保持屏幕常亮，避免后台冻结传感器</li>
+          <li>release RPK + 本地签名，OrbitV 侧载安装</li>
+          <li>可视化 QA 与商店素材位于仓库 docs / store-assets</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="section-head">
+      <h2>隐私与边界</h2>
+      <p>只申请完成运动记录所必需的能力。</p>
+    </div>
+    <div class="panel">
+      <ul>
+        <li>不使用网络，不收集账号、位置、通讯录</li>
+        <li>心率仅用于本场运动展示与统计，不上传</li>
+        <li>原始传感器波形不落盘，仅保存挥拍特征与场次汇总</li>
+        <li>卸载应用会删除手表上的全部本地数据</li>
+      </ul>
+    </div>
+    <div class="disclaimer" style="margin-top:16px">
+      正反手、上下手、拍速与热量均为腕部传感器估算，仅供趋势参考，不构成专业训练或医疗建议。本应用不是医疗器械，与 vivo 官方无隶属关系。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 畅羽 · 个人羽毛球记录项目</span>
+  <span>vivo WATCH GT · BlueOS · 本地存储 · v0.1.4</span>
+</footer>
+</body>
+</html>
